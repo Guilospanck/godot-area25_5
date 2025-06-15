@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0g3ubgnys07p"]
+
+[ext_resource type="Texture2D" uid="uid://dh3s62cb5sma3" path="res://assets/textures/Background/Alien1.png" id="1_p320o"]
+[ext_resource type="PackedScene" uid="uid://6jr7aap0qw1w" path="res://scenes/player.tscn" id="2_ho76x"]
+
+[node name="Phase1" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(637.5, 375)
+scale = Vector2(0.663021, 0.688889)
+texture = ExtResource("1_p320o")
+
+[node name="Player" parent="." instance=ExtResource("2_ho76x")]
+position = Vector2(303, 117)
