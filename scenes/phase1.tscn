@@ -4,11 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://6jr7aap0qw1w" path="res://scenes/player.tscn" id="2_ho76x"]
 [ext_resource type="PackedScene" uid="uid://fvuvvumljfyg" path="res://scenes/enemy.tscn" id="3_ho76x"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p320o"]
-size = Vector2(18, 764)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho76x"]
-size = Vector2(1288, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fndts"]
 
 [node name="Phase1" type="Node2D"]
 
@@ -16,46 +14,46 @@ size = Vector2(1288, 20)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
 collision_layer = 8
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
-position = Vector2(4, 372)
-shape = SubResource("RectangleShape2D_p320o")
+position = Vector2(662, 0)
+scale = Vector2(70.6, 1)
+shape = SubResource("RectangleShape2D_ho76x")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
-position = Vector2(1276, 0)
+position = Vector2(0, 713)
 collision_layer = 8
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
-position = Vector2(0, 372)
-shape = SubResource("RectangleShape2D_p320o")
+position = Vector2(662, 0)
+scale = Vector2(70.6, 1)
+shape = SubResource("RectangleShape2D_ho76x")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="Walls"]
-position = Vector2(806, 0)
 collision_layer = 8
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D3"]
-position = Vector2(-167, 0)
-shape = SubResource("RectangleShape2D_ho76x")
+position = Vector2(0, 383)
+scale = Vector2(1, 40)
+shape = SubResource("RectangleShape2D_fndts")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Walls"]
-position = Vector2(806, 711)
+position = Vector2(1282, 0)
 collision_layer = 8
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D4"]
-position = Vector2(-167, 0)
-shape = SubResource("RectangleShape2D_ho76x")
+position = Vector2(0, 383)
+scale = Vector2(1, 40)
+shape = SubResource("RectangleShape2D_fndts")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(637.5, 375)
 scale = Vector2(0.7, 0.727)
 texture = ExtResource("1_p320o")
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_ho76x")]
-position = Vector2(303, 117)
+position = Vector2(250, 157)
 
 [node name="Enemy" parent="." instance=ExtResource("3_ho76x")]
-position = Vector2(350, 249)
+position = Vector2(350, 336)

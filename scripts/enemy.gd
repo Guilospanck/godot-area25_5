@@ -43,10 +43,10 @@ func _physics_process(delta: float) -> void:
 
 ################################ Signals ######################################
 func _on_hitbox_component_body_entered(body: PlayerComponent) -> void:
-	print("[ENEMY] on hitbox body entered " + body.name)
+	print("[ENEMY] _on_hitbox_component_body_entered: " + body.name)
+	# TODO: if the enemy would have a meelee weapon, also do some animation
 	# TODO: maybe do some hurt animation on the Player
 
 # Hurtbox of the player
 func _on_hitbox_component_area_entered(hurtbox_component: HurtboxComponent) -> void:
-	print(hurtbox_component)
 	hurtbox_component.on_damage(DAMAGE)

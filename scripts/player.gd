@@ -27,6 +27,10 @@ func set_camera_limits():
 	camera.limit_top = 0
 	camera.limit_bottom = window_size.y
 
+func setup_camera():
+	set_camera_limits()
+	camera.position_smoothing_enabled = true
+
 func process_input():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
 	velocity = input_dir * SPEED 
@@ -52,9 +56,10 @@ func set_masks_and_layers():
 	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
 
 func _ready() -> void:
-	animated_player.play("idle")
-	set_camera_limits()
 	set_masks_and_layers()
+	animated_player.play("idle")
+	setup_camera()
+	print("potato")
 
 func _physics_process(_delta: float):
 	process_input()
