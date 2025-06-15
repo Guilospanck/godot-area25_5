@@ -13,7 +13,7 @@ const NOT_MOVING: Vector2 = Vector2(0, 0)
 # TODO: a way of removing all elements belonging to a group
 # get_tree().call_group("mobs", "queue_free")
 
-var speed: int = 300
+const SPEED: int = 300
 
 func set_camera_limits():
 	var window_size: Vector2i = window.content_scale_size
@@ -24,13 +24,9 @@ func set_camera_limits():
 	camera.limit_top = 0
 	camera.limit_bottom = window_size.y
 
-func _ready() -> void:
-	animated_player.play("idle")
-	set_camera_limits()
-
 func process_input():
-	var input_dir = Input.get_vector("left", "right", "top", "down")
-	velocity = input_dir * speed
+	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
+	velocity = input_dir * SPEED 
 
 	animated_player.flip_h = input_dir.x < 0
 
@@ -40,6 +36,10 @@ func process_input():
 		animated_player.play("run")
 
 	move_and_slide()
+
+func _ready() -> void:
+	animated_player.play("idle")
+	set_camera_limits()
 
 func _physics_process(_delta: float):
 	process_input()
