@@ -15,6 +15,10 @@ run/main_scene="uid://c0g3ubgnys07p"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Constants="*res://scripts/constants.gd"
+
 [display]
 
 window/size/viewport_width=1280
@@ -57,4 +61,3 @@ down={
 2d_physics/layer_2="Enemy"
 2d_physics/layer_3="Ammo"
 2d_physics/layer_4="Walls"
-2d_physics/layer_5="Camera"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://fvuvvumljfyg"]
+[gd_scene load_steps=11 format=3 uid="uid://fvuvvumljfyg"]
 
 [ext_resource type="Script" uid="uid://fhm2tppceqfx" path="res://scripts/enemy.gd" id="1_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://bu4o8dga4ck2r" path="res://assets/textures/Enemy/Idle-Sheet.png" id="1_md0e3"]
 [ext_resource type="PackedScene" uid="uid://ctve6ht6r2nue" path="res://scenes/hitbox_component.tscn" id="2_4ra3w"]
+[ext_resource type="PackedScene" uid="uid://c85bo6c24sfps" path="res://scenes/hurtbox_component.tscn" id="4_5uy6h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5uy6h"]
 size = Vector2(20, 30)
@@ -45,21 +46,34 @@ animations = [{
 
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.8, 0.8)
-collision_layer = 3
-collision_mask = 5
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_4ra3w")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5uy6h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ipns3")
 animation = &"idle"
-frame_progress = 0.685922
+frame_progress = 0.0781102
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_4ra3w")]
+collision_layer = 2
+collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_5uy6h")
+debug_color = Color(0.180392, 0.901961, 0.0901961, 0.419608)
+
+[node name="HurtboxComponent" parent="." instance=ExtResource("4_5uy6h")]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_5uy6h")
+debug_color = Color(1, 0.113725, 0.0627451, 0.419608)
