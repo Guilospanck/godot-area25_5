@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://rcjqc3uncm6f"]
+
+[ext_resource type="Script" uid="uid://cttkvlc061qpc" path="res://scripts/resources/weapons.gd" id="1_qlv3f"]
+
+[resource]
+script = ExtResource("1_qlv3f")
+name = "Wand"
+position = Vector2(5, 0)
+rotation = 0.0
+scale = Vector2(0.5, 0.5)
+texture_path = "res://assets/textures/Weapon/Wand.png"
+damage = 20
+metadata/_custom_type_script = "uid://cttkvlc061qpc"

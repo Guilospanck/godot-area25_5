@@ -35,10 +35,11 @@ func setup_camera():
 	set_camera_limits()
 	camera.position_smoothing_enabled = true
 
-func setup_weapon():
-	weapon.load_weapon(weapon_resource)
+func setup_weapon(weapon_res: WeaponResource):
+	print("Switching to " + weapon_res.name)
+	weapon.load_weapon(weapon_res)
 
-func process_input():
+func process_movement():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
 	velocity = input_dir * SPEED 
 
@@ -50,6 +51,12 @@ func process_input():
 		animated_player.play("run")
 
 	move_and_slide()
+
+func process_weapon_switch():
+	if Input.is_action_just_pressed("bow"):
+		setup_weapon(load("res://resources/bow.tres"))
+	elif Input.is_action_just_pressed("wand"):
+		setup_weapon(load("res://resources/wand.tres"))
 
 # Set the normal and hitbox/hurtbox layers and masks for the Player
 func set_masks_and_layers():
@@ -63,10 +70,11 @@ func set_masks_and_layers():
 	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
 
 func _ready() -> void:
-	setup_weapon()
+	setup_weapon(weapon_resource)
 	set_masks_and_layers()
 	animated_player.play("idle")
 	setup_camera()
 
 func _physics_process(_delta: float):
-	process_input()
+	process_movement()
+	process_weapon_switch()
