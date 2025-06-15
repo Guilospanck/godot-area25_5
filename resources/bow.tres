@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://cu2p2em0adbrm"]
+
+[ext_resource type="Script" uid="uid://cttkvlc061qpc" path="res://scripts/resources/weapons.gd" id="1_rnnc4"]
+
+[resource]
+script = ExtResource("1_rnnc4")
+name = "Bow"
+position = Vector2(5, 0)
+rotation = 0.0
+scale = Vector2(0.5, 0.5)
+texture_path = "res://assets/textures/Weapon/Bow.png"
+damage = 10
+metadata/_custom_type_script = "uid://cttkvlc061qpc"

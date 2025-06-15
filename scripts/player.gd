@@ -8,6 +8,10 @@ extends CharacterBody2D
 @onready var hitbox: HitboxComponent = $HitboxComponent
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
+@onready var weapon: Weapon = $Weapon
+
+@onready var weapon_resource: WeaponResource = preload("res://resources/bow.tres")
+
 # TODO: add this to ammo
 # func _on_visible_on_screen_notifier_2d_screen_exited():
 #	queue_free()
@@ -30,6 +34,9 @@ func set_camera_limits():
 func setup_camera():
 	set_camera_limits()
 	camera.position_smoothing_enabled = true
+
+func setup_weapon():
+	weapon.load_weapon(weapon_resource)
 
 func process_input():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
@@ -56,10 +63,10 @@ func set_masks_and_layers():
 	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
 
 func _ready() -> void:
+	setup_weapon()
 	set_masks_and_layers()
 	animated_player.play("idle")
 	setup_camera()
-	print("potato")
 
 func _physics_process(_delta: float):
 	process_input()
