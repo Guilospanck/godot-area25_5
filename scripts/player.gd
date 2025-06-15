@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_player: AnimatedSprite2D = $Animations
+@onready var camera: Camera2D = $Camera2D
+@onready var window: Window = get_window()
 
 const NOT_MOVING: Vector2 = Vector2(0, 0)
 
@@ -13,8 +15,18 @@ const NOT_MOVING: Vector2 = Vector2(0, 0)
 
 var speed: int = 300
 
+func set_camera_limits():
+	var window_size: Vector2i = window.content_scale_size
+
+	camera.limit_left = 0
+	camera.limit_right = window_size.x
+
+	camera.limit_top = 0
+	camera.limit_bottom = window_size.y
+
 func _ready() -> void:
 	animated_player.play("idle")
+	set_camera_limits()
 
 func process_input():
 	var input_dir = Input.get_vector("left", "right", "top", "down")
@@ -31,4 +43,3 @@ func process_input():
 
 func _physics_process(_delta: float):
 	process_input()
-

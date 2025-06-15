@@ -174,9 +174,11 @@ animations = [{
 size = Vector2(13, 20.3333)
 
 [node name="Player" type="CharacterBody2D"]
-scale = Vector2(3, 3)
 collision_mask = 10
 script = ExtResource("1_qlg0r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2hs0m")
