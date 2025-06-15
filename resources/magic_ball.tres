@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AmmoResource" load_steps=2 format=3 uid="uid://c26xin61j5u2l"]
+
+[ext_resource type="Script" uid="uid://tqbu0o50gcc3" path="res://scripts/resources/ammos.gd" id="1_r5k1l"]
+
+[resource]
+script = ExtResource("1_r5k1l")
+name = "Magic Ball"
+position = Vector2(5, 0)
+rotation = 0.0
+scale = Vector2(0.5, 0.5)
+texture_path = "res://assets/textures/Weapon/MagicBall.png"
+damage = 20
+metadata/_custom_type_script = "uid://tqbu0o50gcc3"

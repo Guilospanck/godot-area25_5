@@ -27,8 +27,10 @@ func connect_signals():
 
 func _ready() -> void:
 	animated_enemy.play("idle")
+
 	set_masks_and_layers()
 	connect_signals()
+
 	player =  get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
@@ -42,8 +44,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 ################################ Signals ######################################
-func _on_hitbox_component_body_entered(body: PlayerComponent) -> void:
-	print("[ENEMY] _on_hitbox_component_body_entered: " + body.name)
+func _on_hitbox_component_body_entered(_body: PlayerComponent) -> void:
+	pass
+	# print("[ENEMY] _on_hitbox_component_body_entered: " + body.name)
 	# TODO: if the enemy would have a meelee weapon, also do some animation
 	# TODO: maybe do some hurt animation on the Player
 

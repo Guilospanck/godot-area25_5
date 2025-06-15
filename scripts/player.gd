@@ -9,8 +9,10 @@ extends CharacterBody2D
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 @onready var weapon: Weapon = $Weapon
+@onready var ammo: PackedScene = load("res://scenes/ammo.tscn")
 
-@onready var weapon_resource: WeaponResource = preload("res://resources/bow.tres")
+@onready var initial_weapon_resource: WeaponResource = preload("res://resources/bow.tres")
+@onready var current_ammo_resource: AmmoResource = preload("res://resources/arrow.tres")
 
 # TODO: add this to ammo
 # func _on_visible_on_screen_notifier_2d_screen_exited():
@@ -36,8 +38,21 @@ func setup_camera():
 	camera.position_smoothing_enabled = true
 
 func setup_weapon(weapon_res: WeaponResource):
-	print("Switching to " + weapon_res.name)
+	print("Switching to weapon " + weapon_res.name)
 	weapon.load_weapon(weapon_res)
+
+func setup_ammo(ammo_res: AmmoResource):
+	print("Switching to ammo " + ammo_res.name)
+
+	var ammo_instance: Ammo = ammo.instantiate()
+	ammo_instance.shoot = true
+	ammo_instance.towards = get_global_mouse_position()
+
+	ammo_res.position = global_position
+	ammo_instance.load_ammo(ammo_res)
+
+	get_parent().add_child(ammo_instance)
+
 
 func process_movement():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
@@ -55,8 +70,14 @@ func process_movement():
 func process_weapon_switch():
 	if Input.is_action_just_pressed("bow"):
 		setup_weapon(load("res://resources/bow.tres"))
+		current_ammo_resource = load("res://resources/arrow.tres")
 	elif Input.is_action_just_pressed("wand"):
 		setup_weapon(load("res://resources/wand.tres"))
+		current_ammo_resource = load("res://resources/magic_ball.tres")
+
+func process_shoot():
+	if Input.is_action_just_pressed("shoot"):
+		setup_ammo(current_ammo_resource)
 
 # Set the normal and hitbox/hurtbox layers and masks for the Player
 func set_masks_and_layers():
@@ -70,7 +91,7 @@ func set_masks_and_layers():
 	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
 
 func _ready() -> void:
-	setup_weapon(weapon_resource)
+	setup_weapon(initial_weapon_resource)
 	set_masks_and_layers()
 	animated_player.play("idle")
 	setup_camera()
@@ -78,3 +99,4 @@ func _ready() -> void:
 func _physics_process(_delta: float):
 	process_movement()
 	process_weapon_switch()
+	process_shoot()
