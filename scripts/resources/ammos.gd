@@ -13,3 +13,6 @@ extends Resource
 
 @export_category("Metadata")
 @export var damage: int
+
+@export_category("Collision")
+@export var collision_shape: Shape2D

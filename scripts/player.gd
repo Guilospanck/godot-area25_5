@@ -42,16 +42,16 @@ func setup_weapon(weapon_res: WeaponResource):
 	weapon.load_weapon(weapon_res)
 
 func setup_ammo(ammo_res: AmmoResource):
-	print("Switching to ammo " + ammo_res.name)
+	print("Spawning ammo " + ammo_res.name)
 
 	var ammo_instance: Ammo = ammo.instantiate()
+	get_tree().root.add_child(ammo_instance)
+
 	ammo_instance.shoot = true
-	ammo_instance.towards = get_global_mouse_position()
-
-	ammo_res.position = global_position
-	ammo_instance.load_ammo(ammo_res)
-
-	get_parent().add_child(ammo_instance)
+	ammo_instance.firing_position = global_position
+	ammo_instance.towards = get_global_mouse_position() 
+	ammo_instance.position = global_position
+	ammo_instance.ammo_resource = ammo_res
 
 
 func process_movement():
