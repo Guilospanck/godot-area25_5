@@ -10,6 +10,19 @@ const DAMAGE: int = 5
 var player: PlayerComponent
 var window_size: Vector2i
 
+################################ Signals ######################################
+func _on_hitbox_component_body_entered(_body: PlayerComponent) -> void:
+	pass
+	# print("[ENEMY] _on_hitbox_component_body_entered: " + body.name)
+	# TODO: if the enemy would have a meelee weapon, also do some animation
+	# TODO: maybe do some hurt animation on the Player
+
+# Hurtbox of the player
+func _on_hitbox_component_area_entered(hurtbox_component: HurtboxComponent) -> void:
+	hurtbox_component.on_damage(DAMAGE)
+
+########################################################################
+
 # Set the normal and hitbox/hurtbox layers and masks for the Enemy
 func set_masks_and_layers():
 	collision_layer = Constants.LAYER_2_ENEMY
@@ -42,14 +55,3 @@ func _physics_process(delta: float) -> void:
 	animated_enemy.flip_h = !(deg_angle_to_player_position < 90 && deg_angle_to_player_position > -90)
 
 	move_and_slide()
-
-################################ Signals ######################################
-func _on_hitbox_component_body_entered(_body: PlayerComponent) -> void:
-	pass
-	# print("[ENEMY] _on_hitbox_component_body_entered: " + body.name)
-	# TODO: if the enemy would have a meelee weapon, also do some animation
-	# TODO: maybe do some hurt animation on the Player
-
-# Hurtbox of the player
-func _on_hitbox_component_area_entered(hurtbox_component: HurtboxComponent) -> void:
-	hurtbox_component.on_damage(DAMAGE)

@@ -14,10 +14,10 @@ var damage: int = 0
 var direction: Vector2
 var is_shooting: bool = false
 
-func set_masks_and_layers():
-	collision_layer = Constants.LAYER_3_AMMO
-	collision_mask = Constants.LAYER_2_ENEMY + Constants.LAYER_4_WALLS
+const SPEED = 4
 
+
+################################ Signals ######################################
 func _on_shoot(shooting_position: Vector2, ammo_res: AmmoResource, dir: Vector2):
 	if is_shooting:
 		return
@@ -27,6 +27,19 @@ func _on_shoot(shooting_position: Vector2, ammo_res: AmmoResource, dir: Vector2)
 	direction = dir
 
 	load_ammo()
+
+func _on_area2d_area_entered(hurtbox: HurtboxComponent):
+	hurtbox.on_damage(damage)
+
+func _on_area2d_body_entered(body: Node2D):
+	if body is StaticBody2D:
+		queue_free()
+
+########################################################################
+
+func set_masks_and_layers():
+	collision_layer = Constants.LAYER_3_AMMO
+	collision_mask = Constants.LAYER_2_ENEMY + Constants.LAYER_4_WALLS
 
 func load_ammo():
 	if !ammo_resource:
@@ -43,12 +56,6 @@ func load_ammo():
 
 	is_shooting = true
 
-func _on_area2d_area_entered(body: Node2D):
-	print("[_on_area2d_area_entered] Ammo collided with " + body.name)
-
-func _on_area2d_body_entered(body: Node2D):
-	if body is StaticBody2D:
-		queue_free()
 
 func connect_signals():
 	Signals.shoot.connect(_on_shoot)
@@ -61,5 +68,5 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	rotation = direction.angle() 
-	position += direction
+	position += direction * SPEED
 	

@@ -5,7 +5,6 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera2D
 @onready var window: Window = get_window()
 
-@onready var hitbox: HitboxComponent = $HitboxComponent
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 @onready var weapon: Weapon = $Weapon
@@ -18,6 +17,14 @@ extends CharacterBody2D
 # get_tree().call_group("mobs", "queue_free")
 
 const SPEED: int = 300
+
+# Set the normal and hitbox/hurtbox layers and masks for the Player
+func set_masks_and_layers():
+	collision_layer = Constants.LAYER_1_PLAYER
+	collision_mask = Constants.LAYER_4_WALLS
+
+	hurtbox.collision_layer = Constants.LAYER_1_PLAYER
+	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
 
 # Allows the camera to be clamped by the size of the background
 func set_camera_limits():
@@ -36,16 +43,6 @@ func setup_camera():
 func setup_weapon(weapon_res: WeaponResource):
 	print("Switching to weapon " + weapon_res.name)
 	weapon.load_weapon(weapon_res)
-
-func setup_ammo(ammo_res: AmmoResource):
-	print("Spawning ammo " + ammo_res.name)
-
-	var ammo_instance: Ammo = ammo.instantiate()
-	get_tree().root.add_child(ammo_instance)
-
-	var direction = (get_global_mouse_position() - global_position).normalized()
-
-	Signals.shoot.emit(global_position, ammo_res, direction)
 
 func process_movement():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
@@ -69,19 +66,16 @@ func process_weapon_switch():
 		current_ammo_resource = load("res://resources/magic_ball.tres")
 
 func process_shoot():
-	if Input.is_action_just_pressed("shoot"):
-		setup_ammo(current_ammo_resource)
+	if not Input.is_action_just_pressed("shoot"):
+		return
 
-# Set the normal and hitbox/hurtbox layers and masks for the Player
-func set_masks_and_layers():
-	collision_layer = Constants.LAYER_1_PLAYER
-	collision_mask = Constants.LAYER_4_WALLS
+	var ammo_instance: Ammo = ammo.instantiate()
+	get_tree().root.add_child(ammo_instance)
 
-	hitbox.collision_layer = Constants.LAYER_1_PLAYER
-	hitbox.collision_mask = Constants.LAYER_2_ENEMY
+	var direction = (get_global_mouse_position() - global_position).normalized()
 
-	hurtbox.collision_layer = Constants.LAYER_1_PLAYER
-	hurtbox.collision_mask = Constants.LAYER_2_ENEMY
+	Signals.shoot.emit(global_position, current_ammo_resource, direction)
+
 
 func _ready() -> void:
 	setup_weapon(initial_weapon_resource)
