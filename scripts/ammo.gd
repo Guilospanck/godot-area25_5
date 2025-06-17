@@ -44,11 +44,16 @@ func load_ammo():
 	is_shooting = true
 
 func _on_area2d_area_entered(body: Node2D):
-	print("Ammo collided with " + body.name)
+	print("[_on_area2d_area_entered] Ammo collided with " + body.name)
+
+func _on_area2d_body_entered(body: Node2D):
+	if body is StaticBody2D:
+		queue_free()
 
 func connect_signals():
 	Signals.shoot.connect(_on_shoot)
 	self.connect("area_entered", _on_area2d_area_entered)
+	self.connect("body_entered", _on_area2d_body_entered)
 
 func _ready():
 	set_masks_and_layers()

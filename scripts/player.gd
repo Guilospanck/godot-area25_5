@@ -14,10 +14,6 @@ extends CharacterBody2D
 @onready var initial_weapon_resource: WeaponResource = preload("res://resources/bow.tres")
 @onready var current_ammo_resource: AmmoResource = preload("res://resources/arrow.tres")
 
-# TODO: add this to ammo
-# func _on_visible_on_screen_notifier_2d_screen_exited():
-#	queue_free()
-
 # TODO: a way of removing all elements belonging to a group
 # get_tree().call_group("mobs", "queue_free")
 
