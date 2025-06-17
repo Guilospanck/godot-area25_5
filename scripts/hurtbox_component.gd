@@ -6,6 +6,4 @@ extends Area2D
 @export var health: int = 100
 
 func on_damage(damage: int):
-	# print("received " + str(damage))
 	health -= damage
-	# print("New health is " + str(health))

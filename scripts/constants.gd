@@ -1,3 +1,4 @@
+# Autoloaded
 extends Node
 
 const NOT_MOVING: Vector2 = Vector2(0, 0)

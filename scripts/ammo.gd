@@ -10,56 +10,51 @@ extends Area2D
 		if Engine.is_editor_hint():
 			load_ammo()
 
-@onready var ammo: Sprite2D = $Sprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
-
-var damage: int
-var shoot: bool = false
-
-var firing_position: Vector2
-var towards: Vector2
+var damage: int = 0
+var direction: Vector2
+var is_shooting: bool = false
 
 func set_masks_and_layers():
 	collision_layer = Constants.LAYER_3_AMMO
 	collision_mask = Constants.LAYER_2_ENEMY + Constants.LAYER_4_WALLS
 
-# TODO: fix ammo switch
+func _on_shoot(shooting_position: Vector2, ammo_res: AmmoResource, dir: Vector2):
+	if is_shooting:
+		return
+
+	position = shooting_position
+	ammo_resource = ammo_res
+	direction = dir
+
+	load_ammo()
+
 func load_ammo():
 	if !ammo_resource:
 		return
 
+	var ammo: Sprite2D = $Sprite2D
+	var collision_shape: CollisionShape2D = $CollisionShape2D
+
 	ammo.texture = load(ammo_resource.texture_path)
-	ammo.name = ammo_resource.name
 	damage = ammo_resource.damage
 
 	# set the shape of the collision shape
 	collision_shape.shape = ammo_resource.collision_shape
 
-
-func set_scene_orientation():
-	if !ammo_resource:
-		return
-
-	position = ammo_resource.position
-	scale = ammo_resource.scale
-	rotation = ammo_resource.rotation
+	is_shooting = true
 
 func _on_area2d_area_entered(body: Node2D):
 	print("Ammo collided with " + body.name)
 
-func _ready():
-	load_ammo()
-	set_masks_and_layers()
-	set_scene_orientation()
+func connect_signals():
+	Signals.shoot.connect(_on_shoot)
 	self.connect("area_entered", _on_area2d_area_entered)
 
-func _physics_process(delta: float) -> void:
-	if !shoot:
-		return
+func _ready():
+	set_masks_and_layers()
+	connect_signals()
 
-	var mouse_direction = towards - firing_position
-	rotation = mouse_direction.angle() 
-
-	position = position.move_toward(towards, delta * 100)
-
+func _physics_process(_delta: float) -> void:
+	rotation = direction.angle() 
+	position += direction
 	

@@ -47,12 +47,9 @@ func setup_ammo(ammo_res: AmmoResource):
 	var ammo_instance: Ammo = ammo.instantiate()
 	get_tree().root.add_child(ammo_instance)
 
-	ammo_instance.shoot = true
-	ammo_instance.firing_position = global_position
-	ammo_instance.towards = get_global_mouse_position() 
-	ammo_instance.position = global_position
-	ammo_instance.ammo_resource = ammo_res
+	var direction = (get_global_mouse_position() - global_position).normalized()
 
+	Signals.shoot.emit(global_position, ammo_res, direction)
 
 func process_movement():
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
