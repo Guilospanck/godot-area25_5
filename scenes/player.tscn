@@ -106,7 +106,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n7ghd")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -189,8 +189,9 @@ position_smoothing_enabled = true
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"run"
-frame_progress = 0.0493102
+animation = &"death"
+frame = 3
+frame_progress = 1.0
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("7_fjrip")]
 visible = false

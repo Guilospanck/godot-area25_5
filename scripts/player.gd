@@ -10,13 +10,11 @@ extends CharacterBody2D
 @onready var weapon: Weapon = $Weapon
 @onready var ammo: PackedScene = load("res://scenes/ammo.tscn")
 
-@onready var initial_weapon_resource: WeaponResource = preload("res://resources/bow.tres")
-@onready var current_ammo_resource: AmmoResource = preload("res://resources/arrow.tres")
-
-# TODO: a way of removing all elements belonging to a group
-# get_tree().call_group("mobs", "queue_free")
+@onready var initial_weapon_resource: WeaponResource = preload("res://resources/weapons/bow.tres")
+@onready var current_ammo_resource: AmmoResource = preload("res://resources/ammos/arrow.tres")
 
 const SPEED: int = 300
+var is_dead := false
 
 # Set the normal and hitbox/hurtbox layers and masks for the Player
 func set_masks_and_layers():
@@ -45,6 +43,9 @@ func setup_weapon(weapon_res: WeaponResource):
 	weapon.load_weapon(weapon_res)
 
 func process_movement():
+	if is_dead:
+		return
+
 	var input_dir: Vector2 = Input.get_vector("left", "right", "top", "down")
 	velocity = input_dir * SPEED 
 
@@ -59,11 +60,11 @@ func process_movement():
 
 func process_weapon_switch():
 	if Input.is_action_just_pressed("bow"):
-		setup_weapon(load("res://resources/bow.tres"))
-		current_ammo_resource = load("res://resources/arrow.tres")
+		setup_weapon(load("res://resources/weapons/bow.tres"))
+		current_ammo_resource = load("res://resources/ammos/arrow.tres")
 	elif Input.is_action_just_pressed("wand"):
-		setup_weapon(load("res://resources/wand.tres"))
-		current_ammo_resource = load("res://resources/magic_ball.tres")
+		setup_weapon(load("res://resources/weapons/wand.tres"))
+		current_ammo_resource = load("res://resources/ammos/magic_ball.tres")
 
 func process_shoot():
 	if not Input.is_action_just_pressed("shoot"):
@@ -76,8 +77,21 @@ func process_shoot():
 
 	Signals.shoot.emit(global_position, current_ammo_resource, direction)
 
+func _on_death(entity: Node):
+	if entity != self:
+		return
+
+	print("Player died")
+	queue_free()
+	# TODO: Game over
+	print("GAME OVER")
+	get_tree().reload_current_scene()
+
+func _connect_signals():
+	Signals.is_dead.connect(_on_death)
 
 func _ready() -> void:
+	_connect_signals()
 	setup_weapon(initial_weapon_resource)
 	set_masks_and_layers()
 	animated_player.play("idle")

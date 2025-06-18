@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 const SPEED: int = 100
-const DAMAGE: int = 5
+const DAMAGE: int = 50
 
 var player: PlayerComponent
 var window_size: Vector2i
@@ -21,6 +21,13 @@ func _on_hitbox_component_body_entered(_body: PlayerComponent) -> void:
 func _on_hitbox_component_area_entered(hurtbox_component: HurtboxComponent) -> void:
 	hurtbox_component.on_damage(DAMAGE)
 
+func _on_death(entity: Node):
+	if entity != self:
+		return
+
+	print("Enemy died")
+	queue_free()
+
 ########################################################################
 
 # Set the normal and hitbox/hurtbox layers and masks for the Enemy
@@ -35,6 +42,7 @@ func set_masks_and_layers():
 	hurtbox.collision_mask = Constants.LAYER_3_AMMO
 
 func connect_signals():
+	Signals.is_dead.connect(_on_death)
 	hitbox.area_entered.connect(self._on_hitbox_component_area_entered)
 	hitbox.body_entered.connect(self._on_hitbox_component_body_entered)
 

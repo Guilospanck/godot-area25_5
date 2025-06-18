@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctve6ht6r2nue"]
 
-[ext_resource type="Script" uid="uid://pixntwn5byt4" path="res://scripts/hitbox_component.gd" id="1_0rji1"]
+[ext_resource type="Script" uid="uid://pixntwn5byt4" path="res://scripts/common/hitbox_component.gd" id="1_0rji1"]
 
 [node name="HitboxComponent" type="Area2D"]
 collision_layer = 0

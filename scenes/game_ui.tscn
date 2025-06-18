@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://38c60nwfsnd"]
+
+[ext_resource type="PackedScene" uid="uid://dq25p740ei5kp" path="res://scenes/frame_ui.tscn" id="1_yubou"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Weapons" type="HBoxContainer" parent="WeaponsContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="FrameUI" parent="WeaponsContainer/Weapons" instance=ExtResource("1_yubou")]
+layout_mode = 2
+
+[node name="PowersContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -237.0
+offset_top = -42.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Powers" type="HBoxContainer" parent="PowersContainer"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 2
+
+[node name="FrameUI" parent="PowersContainer/Powers" instance=ExtResource("1_yubou")]
+layout_mode = 2
+
+[node name="FrameUI2" parent="PowersContainer/Powers" instance=ExtResource("1_yubou")]
+layout_mode = 2
