@@ -12,6 +12,8 @@ extends Control
 		shortcut = value
 		update_data()
 
+@onready var texture_container: PanelContainer = $CenterContainer/TextureContainer
+
 func update_data():
 	if texture:
 		var texture_rect = $CenterContainer/TextureContainer/TextureRect
@@ -22,13 +24,11 @@ func update_data():
 		shortcut_label.text = shortcut
 
 func set_active():
-	var texture_container = $CenterContainer/TextureContainer
 	var new_stylebox_normal = texture_container.get_theme_stylebox("panel").duplicate()
 	new_stylebox_normal.border_color = Color.WHITE
 	texture_container.add_theme_stylebox_override("panel", new_stylebox_normal)
 
 func set_inactive():
-	var texture_container = $CenterContainer/TextureContainer
 	var new_stylebox_normal = texture_container.get_theme_stylebox("panel").duplicate()
 	new_stylebox_normal.border_color = Color.BLACK
 	texture_container.add_theme_stylebox_override("panel", new_stylebox_normal)
