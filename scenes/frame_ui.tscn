@@ -1,21 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq25p740ei5kp"]
+[gd_scene load_steps=4 format=3 uid="uid://dq25p740ei5kp"]
 
 [ext_resource type="Texture2D" uid="uid://bavlwwcalm7dr" path="res://assets/textures/UI/ui_weapon_border.png" id="1_nfj75"]
-[ext_resource type="FontFile" uid="uid://c75k0aa6f3tn8" path="res://assets/fonts/FiraSans-Bold.ttf" id="2_1y1ca"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1y1ca"]
-bg_color = Color(0.247059, 0.690196, 0.54902, 0.105882)
+bg_color = Color(0.26074, 0.629946, 0.908667, 0.105882)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yhjyx"]
-bg_color = Color(0.876331, 0.486911, 3.85046e-07, 1)
-corner_radius_top_left = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nfj75"]
+bg_color = Color(0.82256, 0.52582, 0.0592007, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.000333904, 0.000333904, 0.000333903, 1)
 
 [node name="FrameUI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 32.0
-offset_bottom = 32.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CenterContainer" type="Control" parent="."]
 layout_mode = 1
@@ -52,34 +56,21 @@ mouse_filter = 2
 texture = ExtResource("1_nfj75")
 stretch_mode = 5
 
-[node name="ShortcutPanel" type="Panel" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_yhjyx")
-
-[node name="Shortcut" type="Label" parent="ShortcutPanel"]
-layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_1y1ca")
-theme_override_font_sizes/font_size = 16
+offset_left = -10.0
+offset_bottom = 15.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nfj75")
+
+[node name="Label" type="Label" parent="CenterContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 9
 text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1
