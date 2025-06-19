@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dq25p740ei5kp"]
+[gd_scene load_steps=4 format=3 uid="uid://dq25p740ei5kp"]
+
+[ext_resource type="Script" uid="uid://s1pxbbofgqlh" path="res://scripts/slot.gd" id="1_ic0fu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vi36s"]
 bg_color = Color(0.172549, 0.639216, 0.909804, 0.0784314)
@@ -26,13 +28,14 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 anti_aliasing = false
 
-[node name="FrameUI" type="Control"]
+[node name="Slot" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ic0fu")
 
 [node name="CenterContainer" type="Control" parent="."]
 layout_mode = 1
@@ -48,7 +51,7 @@ offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponPanelContainer" type="PanelContainer" parent="CenterContainer"]
+[node name="TextureContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +59,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vi36s")
+
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/TextureContainer"]
+layout_mode = 2
 
 [node name="ShortcutPanelContainer" type="PanelContainer" parent="CenterContainer"]
 layout_mode = 1
@@ -72,6 +78,5 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
-text = "E"
 horizontal_alignment = 1
 vertical_alignment = 1

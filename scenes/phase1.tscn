@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0g3ubgnys07p"]
+[gd_scene load_steps=6 format=3 uid="uid://c0g3ubgnys07p"]
 
 [ext_resource type="Texture2D" uid="uid://dh3s62cb5sma3" path="res://assets/textures/Background/Alien1.png" id="1_p320o"]
 [ext_resource type="PackedScene" uid="uid://6jr7aap0qw1w" path="res://scenes/player.tscn" id="2_ho76x"]
 [ext_resource type="PackedScene" uid="uid://fvuvvumljfyg" path="res://scenes/enemy.tscn" id="3_ho76x"]
-[ext_resource type="PackedScene" uid="uid://38c60nwfsnd" path="res://scenes/game_ui.tscn" id="4_fndts"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho76x"]
 
@@ -58,7 +57,3 @@ position = Vector2(250, 157)
 
 [node name="Enemy" parent="." instance=ExtResource("3_ho76x")]
 position = Vector2(350, 336)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="GameUI" parent="CanvasLayer" instance=ExtResource("4_fndts")]

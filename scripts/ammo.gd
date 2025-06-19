@@ -16,7 +16,6 @@ var is_shooting: bool = false
 
 const SPEED = 4
 
-
 ################################ Signals ######################################
 func _on_shoot(shooting_position: Vector2, ammo_res: AmmoResource, dir: Vector2):
 	if is_shooting:

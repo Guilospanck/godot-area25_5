@@ -10,7 +10,7 @@ extends CharacterBody2D
 @onready var weapon: Weapon = $Weapon
 @onready var ammo: PackedScene = load("res://scenes/ammo.tscn")
 
-@onready var initial_weapon_resource: WeaponResource = preload("res://resources/weapons/bow.tres")
+@onready var current_weapon_resource: WeaponResource = preload("res://resources/weapons/bow.tres")
 @onready var current_ammo_resource: AmmoResource = preload("res://resources/ammos/arrow.tres")
 
 const SPEED: int = 300
@@ -41,6 +41,8 @@ func setup_camera():
 func setup_weapon(weapon_res: WeaponResource):
 	print("Switching to weapon " + weapon_res.name)
 	weapon.load_weapon(weapon_res)
+	current_weapon_resource = weapon_res
+
 
 func process_movement():
 	if is_dead:
@@ -62,9 +64,12 @@ func process_weapon_switch():
 	if Input.is_action_just_pressed("bow"):
 		setup_weapon(load("res://resources/weapons/bow.tres"))
 		current_ammo_resource = load("res://resources/ammos/arrow.tres")
+		Signals.weapon_switch.emit(current_weapon_resource, "1")
 	elif Input.is_action_just_pressed("wand"):
 		setup_weapon(load("res://resources/weapons/wand.tres"))
 		current_ammo_resource = load("res://resources/ammos/magic_ball.tres")
+		Signals.weapon_switch.emit(current_weapon_resource, "2")
+
 
 func process_shoot():
 	if not Input.is_action_just_pressed("shoot"):
@@ -92,7 +97,7 @@ func _connect_signals():
 
 func _ready() -> void:
 	_connect_signals()
-	setup_weapon(initial_weapon_resource)
+	setup_weapon(current_weapon_resource)
 	set_masks_and_layers()
 	animated_player.play("idle")
 	setup_camera()
