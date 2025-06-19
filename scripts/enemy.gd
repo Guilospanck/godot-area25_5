@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var hurtbox: HurtboxComponent = $HurtboxComponent
 
 const SPEED: int = 100
-const DAMAGE: int = 50
+const DAMAGE: int = 5
 
 var player: PlayerComponent
 var window_size: Vector2i

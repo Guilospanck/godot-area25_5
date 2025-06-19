@@ -9,4 +9,5 @@ const LAYER_1_PLAYER: int = 1
 const LAYER_2_ENEMY: int = 2
 const LAYER_3_AMMO: int = 4
 const LAYER_4_WALLS: int = 8
+const LAYER_5_ITEMS: int = 16
 

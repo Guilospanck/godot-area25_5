@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StatResource" load_steps=3 format=3 uid="uid://d1ehci5guj8nn"]
+
+[ext_resource type="Script" uid="uid://dbmyiq8pr6cfm" path="res://scripts/resources/stats.gd" id="1_sx80r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sx80r"]
+radius = 9.0
+height = 18.0
+
+[resource]
+script = ExtResource("1_sx80r")
+name = "Speed"
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(0, 0)
+texture_path = "res://assets/textures/Items/lightning.png"
+stat = 10
+collision_shape = SubResource("CapsuleShape2D_sx80r")
+metadata/_custom_type_script = "uid://dbmyiq8pr6cfm"

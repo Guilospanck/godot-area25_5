@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://38c60nwfsnd"]
 
-[ext_resource type="Script" uid="uid://ca2rrcymnlsqs" path="res://scripts/game_ui.gd" id="1_rns2u"]
+[ext_resource type="Script" uid="uid://ca2rrcymnlsqs" path="res://scripts/ui/game_ui.gd" id="1_rns2u"]
 [ext_resource type="PackedScene" uid="uid://dq25p740ei5kp" path="res://scenes/slot.tscn" id="1_yubou"]
 [ext_resource type="Texture2D" uid="uid://b67yat5aqk1gp" path="res://assets/textures/Weapon/Bow.png" id="3_u2dgd"]
 [ext_resource type="Texture2D" uid="uid://ty6kvo6lk6a1" path="res://assets/textures/Weapon/Wand.png" id="4_bt76a"]
@@ -66,3 +66,21 @@ layout_mode = 2
 
 [node name="Slot2" parent="PowersContainer/Powers" instance=ExtResource("1_yubou")]
 layout_mode = 2
+
+[node name="StatsContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -87.0
+offset_top = 15.0
+offset_right = -23.0
+offset_bottom = 79.0
+grow_horizontal = 0
+theme_override_constants/margin_right = 32
+
+[node name="Stats" type="HBoxContainer" parent="StatsContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 70

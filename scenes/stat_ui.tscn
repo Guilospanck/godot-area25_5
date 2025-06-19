@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://telijvygm1mp"]
+
+[ext_resource type="Script" uid="uid://rrl3lur4gycx" path="res://scripts/ui/stat.gd" id="1_tqlgq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fd3ns"]
+bg_color = Color(0.589311, 0.630759, 0.336234, 1)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[node name="Stat" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqlgq")
+
+[node name="IconPanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="IconPanelContainer"]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="QuantityControl" type="Control" parent="IconPanelContainer"]
+layout_mode = 2
+
+[node name="QuantityPanelContainer" type="PanelContainer" parent="IconPanelContainer/QuantityControl"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -22.0
+offset_bottom = 22.3333
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_fd3ns")
+
+[node name="Quantity" type="Label" parent="IconPanelContainer/QuantityControl/QuantityPanelContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 2
