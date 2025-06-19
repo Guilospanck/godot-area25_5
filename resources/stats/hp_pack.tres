@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="StatResource" load_steps=3 format=3 uid="uid://brca6ys7gm72o"]
+
+[ext_resource type="Script" uid="uid://dbmyiq8pr6cfm" path="res://scripts/resources/stats.gd" id="1_m81n7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m81n7"]
+size = Vector2(26.685, 26.11)
+
+[resource]
+script = ExtResource("1_m81n7")
+name = "HP"
+position = Vector2(0, 0)
+rotation = 0.0
+scale = Vector2(0, 0)
+texture_path = "res://assets/textures/Items/hp_pack.png"
+stat = 10
+collision_shape = SubResource("RectangleShape2D_m81n7")
+metadata/_custom_type_script = "uid://dbmyiq8pr6cfm"

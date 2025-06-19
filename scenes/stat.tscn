@@ -1,19 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://xojrcvqbca1k"]
+[gd_scene load_steps=2 format=3 uid="uid://xojrcvqbca1k"]
 
 [ext_resource type="Script" uid="uid://xcdmlgf82wn2" path="res://scripts/stat.gd" id="1_1jl2q"]
-[ext_resource type="Texture2D" uid="uid://rjeb1vrb1vqc" path="res://assets/textures/Items/lightning.png" id="3_mdebr"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sx80r"]
-radius = 10.674
-height = 21.3481
 
 [node name="Stat" type="Area2D"]
+collision_layer = 16
 script = ExtResource("1_1jl2q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("3_mdebr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-0.5, -0.499999)
 scale = Vector2(0.562112, 1.03407)
-shape = SubResource("CapsuleShape2D_sx80r")

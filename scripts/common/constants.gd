@@ -3,6 +3,8 @@ extends Node
 
 const NOT_MOVING: Vector2 = Vector2(0, 0)
 
+const VIEWPORT_CUSHION_OFFSET: float = 20.0
+
 # Layers and Masks
 const LAYER_0_NONE: int = 0
 const LAYER_1_PLAYER: int = 1
