@@ -14,6 +14,7 @@ var stat: PackedScene = preload("res://scenes/stat_ui.tscn")
 # }
 var current_stats: Dictionary = {}
 
+################################ Signals ######################################
 # TODO:  Use this for powers
 # var slot: PackedScene = preload("res://scenes/slot.tscn")
 # var current_weapons: Array = []
@@ -32,12 +33,7 @@ var current_stats: Dictionary = {}
 # 	current_weapons.append(weapon_name)
 
 func _on_weapon_switch(_weapon_res: WeaponResource, shortcut: String):
-	for child in weapons.get_children():
-		var label: Label = child.get_node("CenterContainer/ShortcutPanelContainer/ShortcutLabel")
-		if label.text == shortcut:
-			child.set_active()
-		else:
-			child.set_inactive()
+	_update_weapon_ui_active_state(shortcut)
 
 func _on_stat_found(stat_res: StatResource):
 	var stat_name: String = stat_res.name
@@ -67,7 +63,19 @@ func _on_stat_found(stat_res: StatResource):
 
 	stat_instance.update_data(texture, quantity)
 
+########################################################################
+
+func _update_weapon_ui_active_state(shortcut: String):
+	for child in weapons.get_children():
+		var label: Label = child.get_node("CenterContainer/ShortcutPanelContainer/ShortcutLabel")
+		if label.text == shortcut:
+			child.set_active()
+		else:
+			child.set_inactive()
 
 func _ready() -> void:
 	Signals.weapon_switch.connect(_on_weapon_switch)
 	Signals.stat_found.connect(_on_stat_found)
+
+	# Set the first weapon as active
+	_update_weapon_ui_active_state("1")
