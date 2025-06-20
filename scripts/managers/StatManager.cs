@@ -1,6 +1,6 @@
 #nullable enable
-using Godot;
 using System.Linq;
+using Godot;
 
 public partial class StatManager : Node
 {
@@ -22,12 +22,13 @@ public partial class StatManager : Node
             return;
         }
 
-        ViewportBoundaries? boundaries = Utils.Instance?.GetViewportBoundaries(where);
-        if (boundaries == null)
+        if (Utils.Instance == null)
         {
-            GD.Print("Cannot spawn stats because `boundaries` is null.");
+            GD.Print("Cannot spawn stats because `Utils` is null.");
             return;
         }
+
+        ViewportBoundaries boundaries = Utils.Instance.GetViewportBoundaries(where);
 
         foreach (var i in Enumerable.Range(0, count))
         {

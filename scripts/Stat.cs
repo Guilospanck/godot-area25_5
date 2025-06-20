@@ -44,7 +44,7 @@ public partial class Stat : Area2D
             return;
         }
 
-        this.EmitSignal(Signals.SignalName.StatFound, _statResource);
+        EmitSignal(Signals.SignalName.StatFound, _statResource);
         QueueFree();
     }
 
