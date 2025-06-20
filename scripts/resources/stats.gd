@@ -1,3 +1,4 @@
+# DONE to C#
 class_name StatResource
 extends Resource
 
