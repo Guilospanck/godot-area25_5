@@ -1,3 +1,4 @@
+# DONE to C#
 # Hurtboxes are monitorable
 class_name HurtboxComponent
 extends Area2D

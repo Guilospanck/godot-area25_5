@@ -1,12 +1,13 @@
 using Godot;
 using System;
 
-public partial class StatResource : Resource
+public partial class AmmoResource : Resource
 {
+
     [Export]
     public String Name;
 
-    [ExportCategory("Stat orientation")]
+    [ExportCategory("Ammo orientation")]
     [Export]
     public Vector2 Position;
     [Export]
@@ -20,9 +21,10 @@ public partial class StatResource : Resource
 
     [ExportCategory("Metadata")]
     [Export]
-    public int Stat; // TODO: change
+    public int Damage;
 
     [ExportCategory("Collision")]
     [Export]
     public Shape2D CollisionShape;
+
 }

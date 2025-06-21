@@ -31,8 +31,8 @@ public partial class Stat : Area2D
             return;
         }
 
-        _statTexture.Texture = ResourceLoader.Load<Texture2D>(stat.texturePath);
-        _collisionShape.Shape = stat.collisionShape;
+        _statTexture.Texture = ResourceLoader.Load<Texture2D>(stat.TexturePath);
+        _collisionShape.Shape = stat.CollisionShape;
 
         _statResource = stat;
     }
