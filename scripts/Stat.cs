@@ -18,7 +18,7 @@ public partial class Stat : Area2D
             _statResource = value;
             if (Engine.IsEditorHint())
             {
-                GD.Print("In editor");
+                LoadStat();
             }
         }
     }
@@ -37,6 +37,7 @@ public partial class Stat : Area2D
         _statResource = stat;
     }
 
+    // ################################ Signals ######################################
     private void _onArea2DBodyEntered(Node2D _body)
     {
         if (_statResource == null)
@@ -47,6 +48,7 @@ public partial class Stat : Area2D
         EmitSignal(Signals.SignalName.StatFound, _statResource);
         QueueFree();
     }
+    // ########################################################################
 
     // See more on connecting signals: https://docs.godotengine.org/en/stable/classes/class_object.html#class-object-method-connect
     private void _connectSignals()
