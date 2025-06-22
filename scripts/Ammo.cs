@@ -1,6 +1,5 @@
 #nullable enable
 using Godot;
-using System;
 
 [Tool]
 public partial class Ammo : Area2D
@@ -14,7 +13,7 @@ public partial class Ammo : Area2D
 	private const int SPEED = 4;
 
 	[Export]
-	public AmmoResource AmmoResource
+	public AmmoResource? AmmoResource
 	{
 		get => _ammoResource; set
 		{
