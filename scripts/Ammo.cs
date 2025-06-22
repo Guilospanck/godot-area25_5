@@ -98,8 +98,10 @@ public partial class Ammo : Area2D
 		_connectSignals();
 	}
 
-	public override void _PhysicsProcess(double _delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		base._PhysicsProcess(delta);
+
 		// Makes the compiler happy. It would be the same as 
 		// if (_direction != null)
 		if (_direction is Vector2 dir)

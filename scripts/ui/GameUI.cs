@@ -98,7 +98,7 @@ public partial class GameUI : Control
 		Signals.Instance.StatFound += _onStatFound;
 	}
 
-	private void _initialiseVariables()
+	private void _initialiseNodes()
 	{
 		_weaponsContainerUI = GetNode<HBoxContainer>("WeaponsContainer/Weapons");
 		_statsContainerUI = GetNode<HBoxContainer>("StatsContainer/Stats");
@@ -109,7 +109,7 @@ public partial class GameUI : Control
 	{
 		base._Ready();
 
-		_initialiseVariables();
+		_initialiseNodes();
 		_connectSignals();
 		_updateWeaponUiActiveState("1"); // Set the first weapon as active
 	}
