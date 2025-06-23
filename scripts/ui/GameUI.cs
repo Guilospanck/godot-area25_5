@@ -36,7 +36,7 @@ public partial class GameUI : Control
 		String statName = statResource.Name;
 		int count = 1;
 
-		Texture2D texture = ResourceLoader.Load<Texture2D>(statResource.TexturePath);
+		Texture2D texture = GD.Load<Texture2D>(statResource.TexturePath);
 		String quantity = $"x{count}";
 
 		if (_currentStats.ContainsKey(statName))
@@ -102,7 +102,7 @@ public partial class GameUI : Control
 	{
 		_weaponsContainerUI = GetNode<HBoxContainer>("WeaponsContainer/Weapons");
 		_statsContainerUI = GetNode<HBoxContainer>("StatsContainer/Stats");
-		_stat = ResourceLoader.Load<PackedScene>("res://scenes/stat_ui.tscn");
+		_stat = GD.Load<PackedScene>("res://scenes/stat_ui.tscn");
 	}
 
 	public override void _Ready()

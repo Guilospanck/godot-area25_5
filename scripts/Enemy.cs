@@ -7,8 +7,8 @@ public partial class Enemy : CharacterBody2D
 	private HitboxComponent? _hitbox = null;
 	private HurtboxComponent? _hurtbox = null;
 
-	private const int SPEED = 100;
-	private const int DAMAGE = 5;
+	private const int _SPEED = 100;
+	private const int _DAMAGE = 5;
 
 	// TODO: add after player is added
 	// private Player? _player = null;
@@ -28,7 +28,7 @@ public partial class Enemy : CharacterBody2D
 	{
 		if (area is HurtboxComponent)
 		{
-			(area as HurtboxComponent).OnDamage(DAMAGE);
+			(area as HurtboxComponent).OnDamage(_DAMAGE);
 		}
 	}
 

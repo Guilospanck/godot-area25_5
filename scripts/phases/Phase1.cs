@@ -8,7 +8,7 @@ public partial class Phase1 : Node
 
 	public override void _Ready()
 	{
-		_statManager = GD.Load<StatManager>("StatManager");
+		_statManager = GetNode<StatManager>("StatManager");
 		_statManager.SpawnRandom(this, 8);
 	}
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cd75my4puayhu"]
 
-[ext_resource type="Script" uid="uid://bosuc473aqmjr" path="res://scripts/managers/stat_manager.gd" id="1_x61rh"]
+[ext_resource type="Script" uid="uid://wvalo6ut8ibe" path="res://scripts/managers/StatManager.cs" id="1_p11w3"]
 
 [node name="StatManager" type="Node2D"]
-script = ExtResource("1_x61rh")
+script = ExtResource("1_p11w3")

@@ -1,17 +1,13 @@
-[gd_resource type="Resource" script_class="AmmoResource" load_steps=3 format=3 uid="uid://by3sbamdupj8e"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://by3sbamdupj8e"]
 
-[ext_resource type="Script" uid="uid://tqbu0o50gcc3" path="res://scripts/resources/ammos.gd" id="1_oobkl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oobkl"]
-size = Vector2(16, 7)
+[ext_resource type="Script" uid="uid://c05xqco1g10tj" path="res://scripts/resources/AmmoResource.cs" id="1_1illk"]
 
 [resource]
-script = ExtResource("1_oobkl")
-name = "Arrow"
-position = Vector2(5, 0)
-rotation = 0.0
-scale = Vector2(0.5, 0.5)
-texture_path = "res://assets/textures/Weapon/Arrow.png"
-damage = 10
-collision_shape = SubResource("RectangleShape2D_oobkl")
+script = ExtResource("1_1illk")
+Name = ""
+Position = Vector2(0, 0)
+Rotation = 0.0
+Scale = Vector2(0, 0)
+TexturePath = ""
+Damage = 0
 metadata/_custom_type_script = "uid://tqbu0o50gcc3"

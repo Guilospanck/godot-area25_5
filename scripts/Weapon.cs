@@ -30,7 +30,7 @@ public partial class Weapon : Sprite2D
 			return;
 		}
 
-		Texture = ResourceLoader.Load<Texture2D>(weaponRes.TexturePath);
+		Texture = GD.Load<Texture2D>(weaponRes.TexturePath);
 		Name = weaponRes.Name;
 		_damage = weaponRes.Damage;
 

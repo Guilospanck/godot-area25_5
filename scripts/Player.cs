@@ -26,8 +26,8 @@ public partial class Player : CharacterBody2D
 		_weapon = GetNode<Weapon>("Weapon");
 
 		_ammo = GD.Load<PackedScene>("res://scenes/ammo.tscn");
-		_currentWeaponResource = GD.Load<WeaponResource>("res://resources/weapons/bow.tres");
-		_currentAmmoResource = GD.Load<AmmoResource>("res://resources/ammos/arrow.tres");
+		_currentWeaponResource = ResourceLoader.Load<WeaponResource>("res://resources/weapons/bow.tres");
+		_currentAmmoResource = ResourceLoader.Load<AmmoResource>("res://resources/ammos/arrow.tres");
 	}
 
 	// The player itself only collides with walls.
@@ -71,11 +71,11 @@ public partial class Player : CharacterBody2D
 		_camera.PositionSmoothingEnabled = true;
 	}
 
-	private void _setupWeapon(WeaponResource weaponResource)
+	private void _setupWeapon(WeaponResource? weaponResource)
 	{
-		if (_weapon == null)
+		if (_weapon == null || weaponResource == null)
 		{
-			GD.Print("Cannot setup weapon because it is null");
+			GD.Print("Cannot setup weapon because weapon or weaponResource is null");
 			return;
 		}
 
@@ -177,7 +177,10 @@ public partial class Player : CharacterBody2D
 		_setupCamera();
 		_connectSignals();
 		_setupWeapon(_currentWeaponResource);
-		_animatedPlayer.Play("idle");
+		if (_animatedPlayer != null)
+		{
+			_animatedPlayer.Play("idle");
+		}
 	}
 
 	public override void _PhysicsProcess(double delta)

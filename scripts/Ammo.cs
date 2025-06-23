@@ -83,7 +83,7 @@ public partial class Ammo : Area2D
 		Sprite2D ammo = GetNode<Sprite2D>("Sprite2D");
 		CollisionShape2D collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 
-		ammo.Texture = ResourceLoader.Load<Texture2D>(_ammoResource.TexturePath);
+		ammo.Texture = GD.Load<Texture2D>(_ammoResource.TexturePath);
 		_damage = _ammoResource.Damage;
 
 		collisionShape.Shape = _ammoResource.CollisionShape;

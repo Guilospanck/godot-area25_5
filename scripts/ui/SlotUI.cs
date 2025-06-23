@@ -35,7 +35,7 @@ public partial class SlotUI : Control
 	{
 		if (_textureContainer == null)
 		{
-			GD.Print("Cannot set slot active because `textureContainer` is null");
+			GD.Print("[SlotUI] Cannot set slot active because `textureContainer` is null");
 			return;
 		}
 
@@ -51,7 +51,7 @@ public partial class SlotUI : Control
 	{
 		if (_textureContainer == null)
 		{
-			GD.Print("Cannot set slot active because `textureContainer` is null");
+			GD.Print("[SlotUI] Cannot set slot active because `textureContainer` is null");
 			return;
 		}
 
@@ -77,6 +77,6 @@ public partial class SlotUI : Control
 	public override void _Ready()
 	{
 		base._Ready();
-		_textureContainer = GD.Load<PanelContainer>("CenterContainer/TextureContainer");
+		_textureContainer = GetNode<PanelContainer>("CenterContainer/TextureContainer");
 	}
 }
