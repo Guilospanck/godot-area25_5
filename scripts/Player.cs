@@ -6,15 +6,15 @@ public partial class Player : CharacterBody2D
 	private const int _SPEED = 300;
 	private bool _isDead = false;
 
-	private AnimatedSprite2D _animatedPlayer = null;
-	private Camera2D _camera = null;
-	private Window _window = null;
-	private HurtboxComponent _hurtbox = null;
-	private Weapon _weapon = null;
+	private AnimatedSprite2D? _animatedPlayer = null;
+	private Camera2D? _camera = null;
+	private Window? _window = null;
+	private HurtboxComponent? _hurtbox = null;
+	private Weapon? _weapon = null;
 
-	private PackedScene _ammo = null;
-	private WeaponResource _currentWeaponResource = null;
-	private AmmoResource _currentAmmoResource = null;
+	private PackedScene? _ammo = null;
+	private WeaponResource? _currentWeaponResource = null;
+	private AmmoResource? _currentAmmoResource = null;
 
 
 	private void _initialiseNodes()
