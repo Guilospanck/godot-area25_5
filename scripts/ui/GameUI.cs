@@ -80,6 +80,7 @@ public partial class GameUI : Control
 				continue;
 			}
 
+
 			Label label = child.GetNode<Label>("CenterContainer/ShortcutPanelContainer/ShortcutLabel");
 			if (label.Text == shortcut)
 			{

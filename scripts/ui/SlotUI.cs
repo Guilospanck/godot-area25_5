@@ -22,7 +22,7 @@ public partial class SlotUI : Control
 	}
 
 	[Export]
-	public String? Shortctu
+	public String? Shortcut
 	{
 		get => _shortcut; set
 		{
