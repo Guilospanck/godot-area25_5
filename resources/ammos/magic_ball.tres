@@ -2,12 +2,16 @@
 
 [ext_resource type="Script" uid="uid://c05xqco1g10tj" path="res://scripts/resources/AmmoResource.cs" id="1_q58r3"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5k1l"]
+radius = 4.0
+
 [resource]
 script = ExtResource("1_q58r3")
-Name = ""
-Position = Vector2(0, 0)
-Rotation = 0.0
-Scale = Vector2(0, 0)
-TexturePath = ""
-Damage = 0
+name = "Magic Ball"
+position = Vector2(5, 0)
+rotation = 0.0
+scale = Vector2(0.5, 0.5)
+texture_path = "res://assets/textures/Weapon/MagicBall.png"
+damage = 20
+collision_shape = SubResource("CircleShape2D_r5k1l")
 metadata/_custom_type_script = "uid://tqbu0o50gcc3"

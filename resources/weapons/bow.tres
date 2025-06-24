@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_o31cg")
-Name = ""
-Position = Vector2(0, 0)
-Rotation = 0.0
-Scale = Vector2(0, 0)
-TexturePath = ""
-Damage = 0
+name = "Bow"
+position = Vector2(5, 0)
+rotation = 0.0
+scale = Vector2(0.5, 0.5)
+texture_path = "res://assets/textures/Weapon/Bow.png"
+damage = 10
 metadata/_custom_type_script = "uid://cttkvlc061qpc"
