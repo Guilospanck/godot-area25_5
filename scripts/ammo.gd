@@ -1,3 +1,4 @@
+# Done to C#
 @tool
 
 class_name Ammo

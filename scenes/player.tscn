@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://6jr7aap0qw1w"]
 
-[ext_resource type="Script" uid="uid://dw6gwpaxouuvc" path="res://scripts/player.gd" id="1_qlg0r"]
+[ext_resource type="Script" uid="uid://5g50fbx3dh5h" path="res://scripts/Player.cs" id="1_smehm"]
 [ext_resource type="Texture2D" uid="uid://26cv71hh84so" path="res://assets/textures/Alien/Alien_death.png" id="2_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://br0woc7iomcct" path="res://assets/textures/Alien/Alien_idle.png" id="3_fjrip"]
 [ext_resource type="Texture2D" uid="uid://dx63x4wufmngh" path="res://assets/textures/Alien/Alien_jump.png" id="4_smehm"]
@@ -176,7 +176,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_mask = 8
-script = ExtResource("1_qlg0r")
+script = ExtResource("1_smehm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -194,7 +194,6 @@ frame = 3
 frame_progress = 1.0
 
 [node name="HurtboxComponent" parent="." instance=ExtResource("7_fjrip")]
-visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]

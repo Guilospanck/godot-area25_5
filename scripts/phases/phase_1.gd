@@ -1,3 +1,4 @@
+# DONE to C#
 extends Node2D
 
 @onready var stat_manager_scene = $StatManager

@@ -12,19 +12,23 @@ config_version=5
 
 config/name="Area25Dot5"
 run/main_scene="uid://bqxk0vmx4w6wy"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Constants="*res://scripts/common/constants.gd"
-Signals="*res://scripts/common/signals.gd"
-Utils="*res://scripts/common/utils.gd"
+Constants="*res://scripts/common/Constants.cs"
+Signals="*res://scripts/common/Signals.cs"
+Utils="*res://scripts/common/Utils.cs"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+
+[dotnet]
+
+project/assembly_name="Area25Dot5"
 
 [global_group]
 

@@ -1,3 +1,4 @@
+# DONE TO C#
 extends Control
 
 @onready var weapons: HBoxContainer = $WeaponsContainer/Weapons
