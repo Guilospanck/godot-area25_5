@@ -4,7 +4,6 @@ using Godot;
 [Tool]
 public partial class Stat : Area2D
 {
-
 	private StatResource? _statResource = null;
 
 	private Sprite2D? _statTexture = null;
@@ -45,7 +44,7 @@ public partial class Stat : Area2D
 			return;
 		}
 
-		EmitSignal(Signals.SignalName.StatFound, _statResource);
+		Signals.Instance.EmitSignal(Signals.SignalName.StatFound, _statResource);
 		QueueFree();
 	}
 	// ########################################################################

@@ -124,7 +124,7 @@ public partial class Player : CharacterBody2D
 			AmmoResource ammoResource = GD.Load<AmmoResource>("res://resources/ammos/arrow.tres");
 			_setupWeapon(weaponResource);
 			_currentAmmoResource = ammoResource;
-			EmitSignal(Signals.SignalName.WeaponSwitch, _currentWeaponResource, "1");
+			Signals.Instance.EmitSignal(Signals.SignalName.WeaponSwitch, _currentWeaponResource, "1");
 		}
 		else if (Input.IsActionJustPressed("wand"))
 		{
@@ -132,7 +132,7 @@ public partial class Player : CharacterBody2D
 			AmmoResource ammoResource = GD.Load<AmmoResource>("res://resources/ammos/magic_ball.tres");
 			_setupWeapon(weaponResource);
 			_currentAmmoResource = ammoResource;
-			EmitSignal(Signals.SignalName.WeaponSwitch, _currentWeaponResource, "2");
+			Signals.Instance.EmitSignal(Signals.SignalName.WeaponSwitch, _currentWeaponResource, "2");
 		}
 	}
 
@@ -147,7 +147,7 @@ public partial class Player : CharacterBody2D
 		GetTree().Root.AddChild(ammoInstance);
 
 		Vector2 direction = (GetGlobalMousePosition() - GlobalPosition).Normalized();
-		EmitSignal(Signals.SignalName.Shoot, GlobalPosition, _currentAmmoResource, direction);
+		Signals.Instance.EmitSignal(Signals.SignalName.Shoot, GlobalPosition, _currentAmmoResource, direction);
 	}
 
 	private void _onDeath(Node entity)

@@ -6,7 +6,7 @@
 radius = 4.0
 
 [resource]
-script = ExtResource("1_r5k1l")
+script = ExtResource("1_q58r3")
 Name = "Magic Ball"
 Position = Vector2(5, 0)
 Rotation = 0.0
