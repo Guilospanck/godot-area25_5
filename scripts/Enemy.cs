@@ -7,11 +7,10 @@ public partial class Enemy : CharacterBody2D
 	private HitboxComponent? _hitbox = null;
 	private HurtboxComponent? _hurtbox = null;
 
-	private const int _SPEED = 100;
+	private const float _SPEED = 100.0f;
 	private const int _DAMAGE = 5;
 
-	// TODO: add after player is added
-	// private Player? _player = null;
+	private Player? _player = null;
 
 	private Vector2I? _windowSize = null;
 
@@ -78,8 +77,7 @@ public partial class Enemy : CharacterBody2D
 		_hitbox = GetNode<HitboxComponent>("HitboxComponent");
 		_hurtbox = GetNode<HurtboxComponent>("HurtboxComponent");
 
-		// TODO: add after Player.cs is added
-		// _player = GetTree().GetFirstNodeInGroup("player");
+		_player = GetTree().GetFirstNodeInGroup("player") as Player;
 	}
 
 	public override void _Ready()
@@ -95,16 +93,15 @@ public partial class Enemy : CharacterBody2D
 	{
 		base._PhysicsProcess(delta);
 
-		// TODO: add after Player.cs is added
-		// Position = Position.MoveToward(_player.GlobalPosition, delta * SPEED);
-		// float angleToPlayerInDegrees = GlobalPosition.AngleToPoint(_player.GlobalPosition) * 180/Mathf.Pi;
-		// if (_animatedEnemy != null)
-		// {
-		// # the sprite starts facing the other side, hence the negation
-		// _animatedEnemy.FlipH = !(angleToPlayerInDegrees < 90.0 && angleToPlayerInDegrees > -90.0);
-		// }
+
+		Position = Position.MoveToward(_player.GlobalPosition, (float)(delta * _SPEED));
+		float angleToPlayerInDegrees = GlobalPosition.AngleToPoint(_player.GlobalPosition) * 180 / Mathf.Pi;
+		if (_animatedEnemy != null)
+		{
+			// the sprite starts facing the other side, hence the negation
+			_animatedEnemy.FlipH = !(angleToPlayerInDegrees < 90.0 && angleToPlayerInDegrees > -90.0);
+		}
 
 		MoveAndSlide();
-
 	}
 }
